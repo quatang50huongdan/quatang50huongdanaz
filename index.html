@@ -1,9 +1,12 @@
+
+Landing page · HTML
 <!DOCTYPE html>
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Eflita - Nhận Miễn Phí Ebook 160 Tình Huống Giao Tiếp Tiếng Anh</title>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <style>
   :root{
     --blue:#1a56a8;
@@ -414,6 +417,20 @@
     line-height:1.5;
   }
  
+  .error-box{
+    display:none;
+    text-align:center;
+    background:rgba(211,30,37,.10);
+    border:1px solid var(--red);
+    color:#a5171c;
+    border-radius:6px;
+    padding:12px 16px;
+    margin-top:4px;
+    font-size:13px;
+    font-weight:600;
+  }
+  .error-box.show{display:block;}
+ 
   .form-note{
     max-width:1200px;
     margin:20px auto 0;
@@ -584,6 +601,10 @@
             <div class="desc-line">Chúng tôi sẽ liên hệ với bạn trong vòng 24 giờ. Cảm ơn bạn đã tin tưởng!</div>
           </div>
  
+          <div class="error-box" id="errorBox">
+            Gửi thông tin thất bại. Vui lòng kiểm tra kết nối mạng và thử lại.
+          </div>
+ 
           <div class="form-links">
             <a href="#">Chính sách bảo mật</a> | <a href="#">Điều khoản dịch vụ</a>
           </div>
@@ -597,9 +618,17 @@
   </div>
  
   <script>
+    // ---- Cấu hình EmailJS ----
+    const EMAILJS_PUBLIC_KEY  = '0DlQeLdWBfw_mE1KJ';
+    const EMAILJS_SERVICE_ID  = 'service_3a958xh';
+    const EMAILJS_TEMPLATE_ID = 'template_kwd4g7v';
+ 
+    emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+ 
     const form = document.getElementById('registerForm');
     const submitBtn = document.getElementById('submitBtn');
     const successBox = document.getElementById('successBox');
+    const errorBox = document.getElementById('errorBox');
  
     form.addEventListener('submit', function(e){
       e.preventDefault();
@@ -610,20 +639,34 @@
         return;
       }
  
-      // ---- Nơi gửi dữ liệu đi (API / Google Sheet / CRM...) ----
-      // const formData = {
-      //   fullName: document.getElementById('fullName').value,
-      //   phone: document.getElementById('phone').value,
-      //   email: document.getElementById('email').value,
-      //   province: document.getElementById('province').value,
-      //   field: document.getElementById('field').value,
-      //   message: document.getElementById('message').value
-      // };
-      // fetch('YOUR_API_ENDPOINT', { method:'POST', body: JSON.stringify(formData) });
+      if(errorBox) errorBox.classList.remove('show');
  
-      // Ẩn nút đăng ký, hiện thông báo thành công
-      submitBtn.style.display = 'none';
-      successBox.classList.add('show');
+      // Dữ liệu khớp với các biến {{name}} {{phone}} {{email}} {{city}} {{field}} {{message}} trong template
+      const templateParams = {
+        name: document.getElementById('fullName').value,
+        phone: document.getElementById('phone').value,
+        email: document.getElementById('email').value,
+        city: document.getElementById('province').value,
+        field: document.getElementById('field').value || 'Không chọn',
+        message: document.getElementById('message').value || 'Không có'
+      };
+ 
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'ĐANG GỬI...';
+ 
+      emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+        .then(function(){
+          // Ẩn nút đăng ký, hiện thông báo thành công
+          submitBtn.style.display = 'none';
+          successBox.classList.add('show');
+        })
+        .catch(function(err){
+          console.error('EmailJS error:', err);
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'HOÀN TẤT ĐĂNG KÍ';
+          if(errorBox) errorBox.classList.add('show');
+          else alert('Gửi thông tin thất bại, vui lòng thử lại!');
+        });
     });
   </script>
  
