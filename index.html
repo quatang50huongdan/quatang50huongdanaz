@@ -105,11 +105,21 @@
   /* ---------- VIDEO ROW ---------- */
   .video-row{
     display:flex;
-    gap:24px;
+    justify-content:center;
     padding:40px 6%;
     max-width:1200px;
     margin:0 auto;
-    flex-wrap:wrap;
+  }
+  .single-photo{
+    width:100%;
+    max-width:420px;
+    border-radius:8px;
+    overflow:hidden;
+    box-shadow:0 6px 18px rgba(0,0,0,.15);
+  }
+  .single-photo img{
+    width:100%;
+    display:block;
   }
   .video-card{
     flex:1 1 420px;
@@ -372,18 +382,8 @@
   </div>
  
   <div class="video-row">
-    <div class="video-card a">
-      <span class="badge">VIDEO</span>
-      <div class="play-btn"></div>
-    </div>
-    <div class="video-card b">
-      <span class="badge">▶ SUBSCRIBED</span>
-      <div class="play-btn"></div>
-      <div class="cap">
-        <div class="title">160 CÂU TIẾNG ANH<br>GIAO TIẾP</div>
-        <span class="tag">VỚI TRẺ EM Ở NHÀ</span>
-        <span class="part">Part 1: 1-15</span>
-      </div>
+    <div class="single-photo">
+      <img src="sinhthom5.jpg" alt="Ảnh đại diện">
     </div>
   </div>
  
