@@ -1,1 +1,465 @@
-
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eflita - Nhận Miễn Phí Ebook 160 Tình Huống Giao Tiếp Tiếng Anh</title>
+<style>
+  :root{
+    --blue:#1a56a8;
+    --blue-dark:#123a73;
+    --red:#d31e25;
+    --yellow:#ffd93d;
+    --text:#222;
+    --gray:#6b6b6b;
+    --bg:#ffffff;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color:var(--text);
+    background:var(--bg);
+    line-height:1.5;
+  }
+  a{text-decoration:none; color:inherit;}
+  ul{list-style:none;}
+  img,.ph-img{display:block; width:100%; height:100%; object-fit:cover;}
+ 
+  /* ---------- HEADER ---------- */
+  header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 6%;
+    border-bottom:1px solid #eee;
+    flex-wrap:wrap;
+  }
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .logo-mark{
+    width:46px;height:46px;border-radius:50%;
+    background:conic-gradient(from 200deg, var(--blue), #3f8ae0, var(--blue));
+    position:relative;
+    flex:none;
+  }
+  .logo-mark::after{
+    content:"";
+    position:absolute; inset:9px;
+    background:#fff;
+    border-radius:50%;
+  }
+  .logo-text{
+    font-size:26px;
+    font-weight:800;
+    letter-spacing:.5px;
+  }
+  .logo-text span{color:var(--blue);}
+  .logo-text b{color:var(--red);}
+  .logo-sub{
+    font-size:10px;
+    color:var(--gray);
+    letter-spacing:1px;
+    display:block;
+    margin-top:-4px;
+  }
+  nav ul{
+    display:flex;
+    gap:34px;
+    align-items:center;
+    font-weight:600;
+    font-size:15px;
+  }
+  nav ul li{position:relative; display:flex; align-items:center; gap:4px; cursor:pointer;}
+  nav ul li:hover{color:var(--blue);}
+  .caret{font-size:11px; margin-left:2px;}
+  @media(max-width:900px){
+    nav ul{gap:16px; font-size:13px; flex-wrap:wrap; justify-content:center;}
+    header{gap:12px;}
+  }
+ 
+  /* ---------- BANNER ---------- */
+  .banner{
+    background:var(--red);
+    color:#fff;
+    text-align:center;
+    padding:22px 6%;
+    font-size:22px;
+    font-weight:700;
+    line-height:1.4;
+  }
+  .banner .hl{color:var(--yellow);}
+  @media(max-width:700px){ .banner{font-size:17px;} }
+ 
+  .sub-cta{
+    text-align:center;
+    padding:24px 6% 10px;
+    font-size:19px;
+    border-bottom:1px solid #eee;
+  }
+  .sub-cta b.free{color:var(--red);}
+  .sub-cta b.book{color:var(--red);}
+ 
+  /* ---------- VIDEO ROW ---------- */
+  .video-row{
+    display:flex;
+    gap:24px;
+    padding:40px 6%;
+    max-width:1200px;
+    margin:0 auto;
+    flex-wrap:wrap;
+  }
+  .video-card{
+    flex:1 1 420px;
+    aspect-ratio:16/10;
+    position:relative;
+    border-radius:6px;
+    overflow:hidden;
+    box-shadow:0 6px 18px rgba(0,0,0,.12);
+  }
+  .video-card.a{
+    background:linear-gradient(160deg,#bcd9f5,#7fb2e8 55%,#e8f1fb);
+  }
+  .video-card.b{
+    background:linear-gradient(160deg,#f0e4d8,#d8c3ac 55%,#f5ede2);
+  }
+  .video-card .badge{
+    position:absolute; top:12px; left:12px;
+    background:rgba(0,0,0,.55);
+    color:#fff;
+    font-size:11px;
+    padding:4px 8px;
+    border-radius:3px;
+    letter-spacing:.5px;
+  }
+  .video-card .cap{
+    position:absolute; bottom:16px; left:16px; right:16px;
+    color:#fff;
+    text-shadow:0 2px 6px rgba(0,0,0,.5);
+  }
+  .video-card.b .cap{
+    background:rgba(0,0,0,.15);
+  }
+  .video-card.b .cap .title{
+    font-size:26px;
+    font-weight:800;
+    line-height:1.15;
+  }
+  .video-card.b .cap .tag{
+    display:inline-block;
+    background:var(--red);
+    font-weight:700;
+    font-size:13px;
+    padding:6px 10px;
+    border-radius:3px;
+    margin-top:8px;
+  }
+  .video-card.b .cap .part{
+    display:block;
+    margin-top:8px;
+    font-size:12px;
+    background:rgba(0,0,0,.35);
+    padding:3px 8px;
+    border-radius:3px;
+    width:fit-content;
+  }
+  .play-btn{
+    position:absolute; top:50%; left:50%;
+    transform:translate(-50%,-50%);
+    width:64px;height:64px;
+    background:rgba(0,0,0,.55);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;
+    transition:.2s;
+  }
+  .play-btn:hover{background:var(--red);}
+  .play-btn::after{
+    content:"";
+    border-style:solid;
+    border-width:11px 0 11px 18px;
+    border-color:transparent transparent transparent #fff;
+    margin-left:4px;
+  }
+ 
+  /* ---------- DESCRIPTION ---------- */
+  .desc{
+    text-align:center;
+    max-width:820px;
+    margin:0 auto;
+    padding:10px 6% 50px;
+    font-size:19px;
+    color:#333;
+  }
+  .desc b{color:var(--red);}
+ 
+  /* ---------- FORM SECTION (2 columns) ---------- */
+  .form-section{
+    padding:50px 6% 60px;
+  }
+  .form-wrap{
+    max-width:1200px;
+    margin:0 auto;
+    display:flex;
+    gap:24px;
+    align-items:flex-start;
+    flex-wrap:wrap;
+  }
+ 
+  /* Left: steps box */
+  .steps-box{
+    flex:1 1 480px;
+    background:#f2f2f2;
+    border-radius:10px;
+    padding:36px 40px;
+  }
+  .steps-box h3{
+    text-align:center;
+    font-size:20px;
+    letter-spacing:.3px;
+    margin-bottom:18px;
+  }
+  .steps-box p, .steps-box li{
+    font-size:15px;
+    margin-bottom:12px;
+    line-height:1.5;
+  }
+  .steps-box .step-icon{margin-right:6px;}
+  .steps-box .section-title{
+    color:var(--red);
+    font-weight:800;
+    font-size:16px;
+    margin:20px 0 10px;
+  }
+  .steps-box .sub-list{
+    padding-left:22px;
+    margin-bottom:12px;
+  }
+  .steps-box .sub-list li{
+    list-style:disc;
+    margin-bottom:8px;
+    font-size:15px;
+  }
+  .steps-box .highlight{color:var(--red); font-weight:700;}
+  .steps-box .closing{
+    margin-top:16px;
+    font-size:15px;
+  }
+  .steps-box .closing b{color:var(--red);}
+ 
+  /* Right: yellow form box */
+  .form-box{
+    flex:1 1 420px;
+    background:var(--yellow);
+    border-radius:10px;
+    overflow:hidden;
+    padding-bottom:24px;
+  }
+  .form-box .form-header{
+    background:var(--red);
+    color:#fff;
+    text-align:center;
+    font-weight:800;
+    font-size:18px;
+    letter-spacing:.4px;
+    padding:18px;
+  }
+  form{
+    max-width:400px;
+    margin:0 auto;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+    text-align:left;
+    padding:24px 28px 0;
+  }
+  form label.field-label{
+    font-size:14px;
+    font-weight:600;
+    margin-bottom:6px;
+    display:block;
+  }
+  form input[type=text],
+  form input[type=tel],
+  form input[type=email]{
+    padding:12px 14px;
+    border-radius:6px;
+    border:1px solid #ddd;
+    font-size:14px;
+    width:100%;
+    background:#fff;
+  }
+  form button{
+    margin-top:4px;
+    background:var(--red);
+    color:#fff;
+    border:none;
+    padding:15px;
+    font-size:16px;
+    font-weight:800;
+    letter-spacing:.5px;
+    border-radius:6px;
+    cursor:pointer;
+    transition:.2s;
+    width:100%;
+  }
+  form button:hover{background:#a5171c;}
+  .form-links{
+    text-align:center;
+    font-size:12px;
+    margin-top:12px;
+    color:#333;
+  }
+  .form-links a{text-decoration:underline;}
+  .form-note{
+    max-width:1200px;
+    margin:20px auto 0;
+    background:#fff9df;
+    border:1px solid #ffe89b;
+    border-radius:8px;
+    padding:18px 24px;
+    font-size:15px;
+    color:#333;
+  }
+  .form-note b{color:var(--blue);}
+ 
+  /* ---------- FOOTER ---------- */
+  footer{
+    text-align:center;
+    padding:26px 6%;
+    font-size:13px;
+    color:var(--gray);
+    display:flex;
+    gap:18px;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+  footer a:hover{color:var(--blue);}
+</style>
+</head>
+<body>
+ 
+  <header>
+    <div class="logo">
+      <div class="logo-mark"></div>
+      <div>
+        <div class="logo-text"><span>e</span><b>flita</b></div>
+        <span class="logo-sub">CÙNG CON VƯƠN XA</span>
+      </div>
+    </div>
+    <nav>
+      <ul>
+        <li>Trang chủ</li>
+        <li>Về chúng tôi</li>
+        <li>Khoá học <span class="caret">▾</span></li>
+        <li>Cộng đồng</li>
+        <li>Học viên</li>
+        <li>Blog</li>
+      </ul>
+    </nav>
+  </header>
+ 
+  <div class="banner">
+    Ba mẹ <span class="hl">biết từ vựng</span> tiếng Anh<br>
+    <span class="hl">nhưng không biết</span> nói gì với con mỗi ngày?
+  </div>
+ 
+  <div class="sub-cta">
+    Nhận <b class="free">MIỄN PHÍ</b> bộ ebook <b class="book">160 tình huống giao tiếp tiếng Anh</b>
+  </div>
+ 
+  <div class="video-row">
+    <div class="video-card a">
+      <span class="badge">VIDEO</span>
+      <div class="play-btn"></div>
+    </div>
+    <div class="video-card b">
+      <span class="badge">▶ SUBSCRIBED</span>
+      <div class="play-btn"></div>
+      <div class="cap">
+        <div class="title">160 CÂU TIẾNG ANH<br>GIAO TIẾP</div>
+        <span class="tag">VỚI TRẺ EM Ở NHÀ</span>
+        <span class="part">Part 1: 1-15</span>
+      </div>
+    </div>
+  </div>
+ 
+  <div class="desc">
+    Giúp ba mẹ biết cách nói với con trong các hoạt động hằng ngày như trong
+    <b>ăn, ngủ, chơi, tắm rửa…</b> ngay cả khi ba mẹ <b>không giỏi tiếng Anh.</b>
+  </div>
+ 
+  <div class="form-section">
+    <div class="form-wrap">
+ 
+      <!-- Left: steps -->
+      <div class="steps-box">
+        <h3>ĐỂ NHẬN EBOOK:</h3>
+        <p><span class="step-icon">👉</span><b>Bước 1:</b> Điền thông tin đăng kí nhận tài liệu vào mẫu bên cạnh</p>
+        <p><span class="step-icon">👉</span><b>Bước 2:</b> Vào nhóm 7 NGÀY HỌC SONG NGỮ CÙNG CON</p>
+ 
+        <div class="section-title">VÌ SAO PHẢI VÀO NHÓM 7 NGÀY:</div>
+        <ul>
+          <li><span class="step-icon">👉</span>Vì nhận tài liệu rồi bỏ xó thì sẽ không hiệu quả</li>
+          <li><span class="step-icon">👉</span>Vì có tài liệu, biết mẫu câu là chưa đủ</li>
+          <li><span class="step-icon">👉</span>Và ba mẹ cần một cách để duy trì mỗi ngày</li>
+          <li><span class="step-icon">👉</span><span class="highlight">Để trong 7 ngày đó:</span></li>
+        </ul>
+ 
+        <ul class="sub-list">
+          <li>Mỗi ngày ba mẹ <b>được hướng dẫn</b> dùng 1 nhóm câu cụ thể</li>
+          <li>Được hướng dẫn <b>cách nói + cách chơi + cách tương tác với con</b></li>
+          <li><span class="highlight">Có cộng đồng</span> để ba mẹ duy trì cùng nhau</li>
+          <li><span class="highlight">Có người hướng dẫn</span> để không bị bỏ dở</li>
+        </ul>
+ 
+        <div class="closing">
+          🤙 Đây là bước giúp biến tài liệu thành <b>thói quen thật</b>
+        </div>
+      </div>
+ 
+      <!-- Right: form -->
+      <div class="form-box">
+        <div class="form-header">THÔNG TIN NHẬN TÀI LIỆU</div>
+        <form onsubmit="event.preventDefault(); alert('Cảm ơn bạn đã đăng ký! (demo form)');">
+          <div>
+            <label class="field-label">Họ và tên phụ huynh *</label>
+            <input type="text" placeholder="Vui lòng điền đầy đủ" required>
+          </div>
+          <div>
+            <label class="field-label">Số điện thoại (có kết nối Zalo) *</label>
+            <input type="tel" placeholder="Phone" required>
+          </div>
+          <div>
+            <label class="field-label">Email hay dùng *</label>
+            <input type="email" placeholder="Email" required>
+          </div>
+          <button type="submit">HOÀN TẤT ĐĂNG KÍ</button>
+          <div class="form-links">
+            <a href="#">Chính sách bảo mật</a> | <a href="#">Điều khoản dịch vụ</a>
+          </div>
+        </form>
+      </div>
+    </div>
+ 
+    <div class="form-note">
+      Sau khi bấm <b>"Hoàn tất đăng kí"</b>, ba mẹ sẽ nhận ngay link tham gia nhóm Zalo 7 ngày để bắt đầu đồng hành cùng con nhé 🧡
+    </div>
+ 
+    <div class="desc" style="padding-top:40px;">
+      Ba mẹ <b>không cần đợi</b> đến khi mình giỏi tiếng Anh mới bắt đầu.<br>
+      Chỉ <b>cần bắt đầu</b> bằng một câu nói nhỏ mỗi ngày với con.
+    </div>
+  </div>
+ 
+  <footer>
+    <span>© Eflita Edu — Tiếng Anh Gia Đình</span>
+    <a href="#">Chính sách bảo mật</a>
+    <a href="#">Điều khoản dịch vụ</a>
+  </footer>
+ 
+</body>
+</html>
+ 
