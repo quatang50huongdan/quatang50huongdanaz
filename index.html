@@ -1,5 +1,3 @@
-
-Landing page · HTML
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -82,9 +80,109 @@ Landing page · HTML
   nav ul li{position:relative; display:flex; align-items:center; gap:4px; cursor:pointer;}
   nav ul li:hover{color:var(--blue);}
   .caret{font-size:11px; margin-left:2px;}
-  @media(max-width:900px){
+ 
+  /* Hamburger button (hidden on desktop) - dạng 3 gạch ngang chuẩn */
+  .hamburger{
+    display:none;
+    flex-direction:column;
+    justify-content:center;
+    gap:5px;
+    width:34px;
+    height:34px;
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding:0;
+  }
+  .hamburger span{
+    display:block;
+    width:100%;
+    height:3px;
+    border-radius:2px;
+    background:var(--text);
+    transition:.2s;
+  }
+  .hamburger.open span:nth-child(1){transform:translateY(8px) rotate(45deg);}
+  .hamburger.open span:nth-child(2){opacity:0;}
+  .hamburger.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg);}
+ 
+  /* Mobile side-panel nav (hidden by default) */
+  .mobile-nav-backdrop{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0);
+    z-index:998;
+    pointer-events:none;
+    transition:background .25s ease;
+  }
+  .mobile-nav-backdrop.open{
+    background:rgba(0,0,0,.45);
+    pointer-events:auto;
+  }
+  .mobile-nav{
+    display:none;
+    position:fixed;
+    top:0;
+    right:0;
+    height:100vh;
+    width:min(75vw, 320px);
+    background:#fff;
+    box-shadow:-6px 0 24px rgba(0,0,0,.18);
+    z-index:999;
+    transform:translateX(100%);
+    transition:transform .3s ease;
+    overflow-y:auto;
+  }
+  .mobile-nav.open{transform:translateX(0);}
+  .mobile-nav .mobile-nav-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 20px;
+    border-bottom:1px solid #eee;
+  }
+  .mobile-nav .mobile-nav-header span{
+    font-weight:800;
+    font-size:16px;
+    color:var(--red);
+  }
+  .mobile-nav-close{
+    background:none;
+    border:none;
+    font-size:22px;
+    line-height:1;
+    color:#444;
+    cursor:pointer;
+    padding:4px 8px;
+  }
+  .mobile-nav ul{
+    display:block;
+    list-style:none;
+    padding:8px 20px;
+  }
+  .mobile-nav ul li{
+    width:100%;
+    padding:16px 4px;
+    font-weight:600;
+    font-size:16px;
+    border-bottom:1px solid #f2f2f2;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    cursor:pointer;
+  }
+  .mobile-nav ul li:last-child{border-bottom:none;}
+  .mobile-nav ul li:hover{color:var(--blue);}
+ 
+  @media(max-width:700px){
+    header nav{display:none;}
+    .hamburger{display:flex;}
+    .mobile-nav{display:block;}
+    .mobile-nav-backdrop{display:block;}
+  }
+  @media(max-width:900px) and (min-width:701px){
     nav ul{gap:16px; font-size:13px; flex-wrap:wrap; justify-content:center;}
-    header{gap:12px;}
   }
  
   /* ---------- BANNER ---------- */
@@ -460,11 +558,11 @@ Landing page · HTML
 <body>
  
   <header>
-      <div>
-        <div class="logo-text"><span></span><b>THÀNH TÂM</b></div>
-        <span class="logo-sub">CÙNG CON VƯƠN XA</span>
-      </div>
+    <div class="logo">
+      <div class="logo-text"><span></span><b>THÀNH TÂM</b></div>
+      <span class="logo-sub">CÙNG BẠN VƯƠN XA</span>
     </div>
+ 
     <nav>
       <ul>
         <li>Trang chủ</li>
@@ -475,7 +573,28 @@ Landing page · HTML
         <li>Blog</li>
       </ul>
     </nav>
+ 
+    <button class="hamburger" id="hamburgerBtn" aria-label="Mở menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </header>
+ 
+  <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
+ 
+  <nav class="mobile-nav" id="mobileNav">
+    <div class="mobile-nav-header">
+      <span>MENU</span>
+      <button class="mobile-nav-close" id="mobileNavClose" aria-label="Đóng menu">✕</button>
+    </div>
+    <ul>
+      <li>Trang chủ</li>
+      <li>Về chúng tôi</li>
+      <li>Khoá học <span class="caret">▾</span></li>
+      <li>Cộng đồng</li>
+      <li>Học viên</li>
+      <li>Blog</li>
+    </ul>
+  </nav>
  
   <div class="banner">
     50 <span class="hl">HƯỚNG DẪN </span> TỪ A-Z<br>
@@ -611,7 +730,47 @@ Landing page · HTML
         </form>
       </div>
     </div>
-<script>
+ 
+    <div class="form-note">
+      Sau khi bấm <b>"Đăng ký ngay"</b>, ba mẹ sẽ nhận ngay link tham gia nhóm Zalo 7 ngày để bắt đầu đồng hành cùng con nhé 🧡
+    </div>
+  </div>
+ 
+  <script>
+    // ---- Menu mobile (3 gạch, dạng panel trượt) ----
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    const mobileNavBackdrop = document.getElementById('mobileNavBackdrop');
+    const mobileNavClose = document.getElementById('mobileNavClose');
+ 
+    function openMobileNav(){
+      mobileNav.classList.add('open');
+      mobileNavBackdrop.classList.add('open');
+      hamburgerBtn.classList.add('open');
+      hamburgerBtn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMobileNav(){
+      mobileNav.classList.remove('open');
+      mobileNavBackdrop.classList.remove('open');
+      hamburgerBtn.classList.remove('open');
+      hamburgerBtn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+ 
+    hamburgerBtn.addEventListener('click', function(){
+      mobileNav.classList.contains('open') ? closeMobileNav() : openMobileNav();
+    });
+    mobileNavClose.addEventListener('click', closeMobileNav);
+    mobileNavBackdrop.addEventListener('click', closeMobileNav);
+ 
+    // Đóng menu khi bấm chọn 1 mục
+    mobileNav.querySelectorAll('ul li').forEach(function(item){
+      item.addEventListener('click', closeMobileNav);
+    });
+  </script>
+ 
+  <script>
     // ---- Cấu hình EmailJS ----
     const EMAILJS_PUBLIC_KEY  = '0DlQeLdWBfw_mE1KJ';
     const EMAILJS_SERVICE_ID  = 'service_3a958xh';
