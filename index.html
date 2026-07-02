@@ -10,9 +10,13 @@
     --blue-dark:#123a73;
     --red:#d31e25;
     --yellow:#ffd93d;
+    --orange:#f5a623;
     --text:#222;
     --gray:#6b6b6b;
     --bg:#ffffff;
+    --panel:#141414;
+    --panel-border:#2c2c2c;
+    --input-bg:#1c1c1c;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   body{
@@ -260,22 +264,25 @@
   }
   .steps-box .closing b{color:var(--red);}
  
-  /* Right: yellow form box */
+  /* Right: yellow / red form box (matches provided design) */
   .form-box{
     flex:1 1 420px;
     background:var(--yellow);
     border-radius:10px;
     overflow:hidden;
-    padding-bottom:24px;
+    padding-bottom:28px;
   }
   .form-box .form-header{
     background:var(--red);
-    color:#fff;
     text-align:center;
     font-weight:800;
     font-size:18px;
     letter-spacing:.4px;
     padding:18px;
+    color:#fff;
+  }
+  .form-box .form-header .dot{
+    display:none;
   }
   form{
     max-width:400px;
@@ -289,18 +296,57 @@
   form label.field-label{
     font-size:14px;
     font-weight:600;
+    letter-spacing:.2px;
     margin-bottom:6px;
     display:block;
+    color:#222;
   }
+  form label.field-label .req{color:var(--red);}
+  .field-row{
+    display:flex;
+    gap:14px;
+  }
+  .field-row .field{flex:1 1 0;}
   form input[type=text],
   form input[type=tel],
-  form input[type=email]{
+  form input[type=email],
+  form select,
+  form textarea{
     padding:12px 14px;
     border-radius:6px;
     border:1px solid #ddd;
     font-size:14px;
     width:100%;
     background:#fff;
+    color:#222;
+    font-family:inherit;
+  }
+  form select{
+    appearance:none;
+    -webkit-appearance:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'><path d='M1 1l6 6 6-6' stroke='%23555' stroke-width='2' fill='none' fill-rule='evenodd'/></svg>");
+    background-repeat:no-repeat;
+    background-position:right 14px center;
+    padding-right:36px;
+    cursor:pointer;
+  }
+  form select option{
+    background:#fff;
+    color:#222;
+  }
+  form textarea{
+    resize:vertical;
+    min-height:80px;
+  }
+  form input::placeholder,
+  form textarea::placeholder{
+    color:#999;
+  }
+  form input:focus,
+  form select:focus,
+  form textarea:focus{
+    outline:none;
+    border-color:var(--red);
   }
   form button{
     margin-top:4px;
@@ -317,13 +363,57 @@
     width:100%;
   }
   form button:hover{background:#a5171c;}
+  form button:disabled{opacity:.7; cursor:not-allowed;}
   .form-links{
     text-align:center;
     font-size:12px;
-    margin-top:12px;
+    margin-top:4px;
     color:#333;
   }
-  .form-links a{text-decoration:underline;}
+  .form-links a{text-decoration:underline; color:#123a73;}
+  .form-note-inline{
+    text-align:center;
+    font-size:12px;
+    color:#1a7a1a;
+    font-weight:700;
+    margin-top:2px;
+  }
+ 
+  /* Success message (replaces the button after successful submit) */
+  .success-box{
+    display:none;
+    text-align:center;
+    background:rgba(30,150,60,.12);
+    border:1px solid #1e963c;
+    border-radius:6px;
+    padding:16px 18px;
+    margin-top:4px;
+  }
+  .success-box.show{display:block;}
+  .success-box .check{
+    width:28px;height:28px;
+    border-radius:50%;
+    background:#1e963c;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0 auto 8px;
+    font-size:16px;
+    font-weight:800;
+  }
+  .success-box .title{
+    color:#1e963c;
+    font-weight:800;
+    font-size:15px;
+    margin-bottom:6px;
+  }
+  .success-box .desc-line{
+    color:#2c2c2c;
+    font-size:13px;
+    line-height:1.5;
+  }
+ 
   .form-note{
     max-width:1200px;
     margin:20px auto 0;
@@ -410,20 +500,90 @@
       <!-- Right: form -->
       <div class="form-box">
         <div class="form-header">THÔNG TIN NHẬN TÀI LIỆU</div>
-        <form onsubmit="event.preventDefault(); alert('Cảm ơn bạn đã đăng ký! (demo form)');">
+        <form id="registerForm">
           <div>
-            <label class="field-label">Họ và tên phụ huynh *</label>
-            <input type="text" placeholder="Vui lòng điền đầy đủ" required>
+            <label class="field-label">Họ và tên phụ huynh <span class="req">*</span></label>
+            <input type="text" id="fullName" placeholder="Nguyễn Văn A" required>
           </div>
+ 
           <div>
-            <label class="field-label">Số điện thoại (có kết nối Zalo) *</label>
-            <input type="tel" placeholder="Phone" required>
+            <label class="field-label">Số điện thoại (có kết nối Zalo) <span class="req">*</span></label>
+            <input type="tel" id="phone" placeholder="0912 345 678" required>
           </div>
+ 
           <div>
-            <label class="field-label">Email hay dùng *</label>
-            <input type="email" placeholder="Email" required>
+            <label class="field-label">Email hay dùng <span class="req">*</span></label>
+            <input type="email" id="email" placeholder="email@gmail.com" required>
           </div>
-          <button type="submit">HOÀN TẤT ĐĂNG KÍ</button>
+ 
+          <div>
+            <label class="field-label">Tỉnh / Thành phố <span class="req">*</span></label>
+            <select id="province" required>
+              <option value="" selected disabled>-- Chọn tỉnh thành --</option>
+              <option>Hà Nội</option>
+              <option>Huế</option>
+              <option>Lai Châu</option>
+              <option>Điện Biên</option>
+              <option>Sơn La</option>
+              <option>Lạng Sơn</option>
+              <option>Quảng Ninh</option>
+              <option>Thanh Hóa</option>
+              <option>Nghệ An</option>
+              <option>Hà Tĩnh</option>
+              <option>Cao Bằng</option>
+              <option>Tuyên Quang</option>
+              <option>Yên Bái</option>
+              <option>Thái Nguyên</option>
+              <option>Phú Thọ</option>
+              <option>Bắc Ninh</option>
+              <option>Hưng Yên</option>
+              <option>TP. Hải Phòng</option>
+              <option>Ninh Bình</option>
+              <option>Quảng Trị</option>
+              <option>TP. Đà Nẵng</option>
+              <option>Quảng Ngãi</option>
+              <option>Gia Lai</option>
+              <option>Khánh Hòa</option>
+              <option>Lâm Đồng</option>
+              <option>Đắk Lắk</option>
+              <option>TP. Hồ Chí Minh</option>
+              <option>Đồng Nai</option>
+              <option>Tây Ninh</option>
+              <option>Vĩnh Long</option>
+              <option>Đồng Tháp</option>
+              <option>Cà Mau</option>
+              <option>An Giang</option>
+              <option>TP. Cần Thơ</option>
+            </select>
+          </div>
+ 
+          <div>
+            <label class="field-label">Lĩnh vực / Nghề nghiệp</label>
+            <select id="field">
+              <option value="" selected disabled>-- Chọn lĩnh vực --</option>
+              <option>Kinh doanh / Buôn bán</option>
+              <option>Marketing / Truyền thông</option>
+              <option>Công nghệ / IT</option>
+              <option>Giáo dục / Đào tạo</option>
+              <option>Y tế / Sức khỏe</option>
+              <option>Tài chính / Kế toán</option>
+              <option>Khác</option>
+            </select>
+          </div>
+ 
+          <div>
+            <label class="field-label">Câu hỏi / Mong muốn của bạn</label>
+            <textarea id="message" placeholder="Nhập nội dung bạn muốn hỏi hoặc mong muốn sau khi tham gia..."></textarea>
+          </div>
+ 
+          <button type="submit" id="submitBtn">HOÀN TẤT ĐĂNG KÍ</button>
+ 
+          <div class="success-box" id="successBox">
+            <div class="check">✓</div>
+            <div class="title">Đăng ký thành công!</div>
+            <div class="desc-line">Chúng tôi sẽ liên hệ với bạn trong vòng 24 giờ. Cảm ơn bạn đã tin tưởng!</div>
+          </div>
+ 
           <div class="form-links">
             <a href="#">Chính sách bảo mật</a> | <a href="#">Điều khoản dịch vụ</a>
           </div>
@@ -432,20 +592,40 @@
     </div>
  
     <div class="form-note">
-      Sau khi bấm <b>"Hoàn tất đăng kí"</b>, ba mẹ sẽ nhận ngay link tham gia nhóm Zalo 7 ngày để bắt đầu đồng hành cùng con nhé 🧡
-    </div>
- 
-    <div class="desc" style="padding-top:40px;">
-      Ba mẹ <b>không cần đợi</b> đến khi mình giỏi tiếng Anh mới bắt đầu.<br>
-      Chỉ <b>cần bắt đầu</b> bằng một câu nói nhỏ mỗi ngày với con.
+      Sau khi bấm <b>"Đăng ký ngay"</b>, ba mẹ sẽ nhận ngay link tham gia nhóm Zalo 7 ngày để bắt đầu đồng hành cùng con nhé 🧡
     </div>
   </div>
  
-  <footer>
-    <span>© Eflita Edu — Tiếng Anh Gia Đình</span>
-    <a href="#">Chính sách bảo mật</a>
-    <a href="#">Điều khoản dịch vụ</a>
-  </footer>
+  <script>
+    const form = document.getElementById('registerForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const successBox = document.getElementById('successBox');
+ 
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+ 
+      // Basic validation for required fields
+      if(!form.checkValidity()){
+        form.reportValidity();
+        return;
+      }
+ 
+      // ---- Nơi gửi dữ liệu đi (API / Google Sheet / CRM...) ----
+      // const formData = {
+      //   fullName: document.getElementById('fullName').value,
+      //   phone: document.getElementById('phone').value,
+      //   email: document.getElementById('email').value,
+      //   province: document.getElementById('province').value,
+      //   field: document.getElementById('field').value,
+      //   message: document.getElementById('message').value
+      // };
+      // fetch('YOUR_API_ENDPOINT', { method:'POST', body: JSON.stringify(formData) });
+ 
+      // Ẩn nút đăng ký, hiện thông báo thành công
+      submitBtn.style.display = 'none';
+      successBox.classList.add('show');
+    });
+  </script>
  
 </body>
 </html>
