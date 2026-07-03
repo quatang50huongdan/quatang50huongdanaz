@@ -366,7 +366,7 @@
   .steps-box .closing b{color:var(--red);}
   .steps-box .reason-item{
     color:var(--text);
-    font-weight:700;
+    font-weight:400;
     font-size:15.5px;
     margin-bottom:12px;
     display:flex;
@@ -670,23 +670,14 @@
             <input type="email" id="email" placeholder="email@gmail.com" required>
           </div>
  
-           <div>
-            <label class="field-label">Địa chỉ thường trú<span class="req">*</span></label>
+          <div>
+            <label class="field-label">Địa chỉ thường trú <span class="req">*</span></label>
+            <input type="text" id="address" placeholder="Số nhà, đường, xã/phường, tỉnh/thành phố" required>
           </div>
- 
  
           <div>
             <label class="field-label">Lĩnh vực / Nghề nghiệp</label>
-            <select id="field">
-              <option value="" selected disabled>-- Chọn lĩnh vực --</option>
-              <option>Kinh doanh / Buôn bán</option>
-              <option>Marketing / Truyền thông</option>
-              <option>Công nghệ / IT</option>
-              <option>Giáo dục / Đào tạo</option>
-              <option>Y tế / Sức khỏe</option>
-              <option>Tài chính / Kế toán</option>
-              <option>Khác</option>
-            </select>
+            <input type="text" id="field" placeholder="Ví dụ: Công nhân, thợ hàn, đầu bếp...">
           </div>
  
           <div>
@@ -775,7 +766,7 @@
         name: document.getElementById('fullName').value,
         phone: document.getElementById('phone').value,
         email: document.getElementById('email').value,
-        city: document.getElementById('province').value,
+        city: document.getElementById('address').value,
         field: document.getElementById('field').value || 'Không chọn',
         message: document.getElementById('message').value || 'Không có'
       };
