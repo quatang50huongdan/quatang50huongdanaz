@@ -364,6 +364,25 @@
     font-size:15px;
   }
   .steps-box .closing b{color:var(--red);}
+  .steps-box .reason-item{
+    color:var(--text);
+    font-weight:700;
+    font-size:15.5px;
+    margin-bottom:12px;
+    display:flex;
+    align-items:flex-start;
+    gap:8px;
+  }
+  .steps-box .reason-item .r-icon{
+    flex:none;
+  }
+  .steps-box h3.red-title{
+    color:var(--red);
+    margin-top:26px;
+  }
+  .steps-box h3.red-title:first-child{
+    margin-top:0;
+  }
  
   /* Right: yellow / red form box (matches provided design) */
   .form-box{
@@ -615,15 +634,21 @@
  
       <!-- Left: steps -->
       <div class="steps-box">
-        <h3>🎁 5 LÝ DO BẠN NHẤT ĐỊNH PHẢI SỞ HỮU BỘ QUÀ TẶNG<br>"50 HƯỚNG DẪN QUAN TRỌNG DÀNH CHO NGƯỜI LAO ĐỘNG ĐI LÀM VIỆC TẠI NƯỚC NGOÀI"</h3>
+        <h3 class="red-title">🎁 5 LÝ DO BẠN NHẤT ĐỊNH PHẢI SỞ HỮU BỘ QUÀ TẶNG<br>"50 HƯỚNG DẪN QUAN TRỌNG DÀNH CHO NGƯỜI LAO ĐỘNG ĐI LÀM VIỆC TẠI NƯỚC NGOÀI"</h3>
  
-        <p><span class="step-icon">⏰</span><b>1. BẠN KHÔNG MẤT HÀNG THÁNG TỰ MÒ MẪM TÌM HIỂU</b><br></p>
-        <p><span class="step-icon">❌</span><b>2. BẠN KHÔNG CHỌN SAI CHƯƠNG TRÌNH – KHÔNG MẤT TIỀN OAN</b><br></p>
+        <div class="reason-item"><span class="r-icon">👉</span><span>1. BẠN KHÔNG MẤT HÀNG THÁNG TỰ MÒ MẪM TÌM HIỂU</span></div>
+        <div class="reason-item"><span class="r-icon">👉</span><span>2. BẠN KHÔNG CHỌN SAI CHƯƠNG TRÌNH – KHÔNG MẤT TIỀN OAN</span></div>
+        <div class="reason-item"><span class="r-icon">👉</span><span>3. BẠN KHÔNG RƠI VÀO NHỮNG CẠM BẪY ĐẮT GIÁ</span></div>
+        <div class="reason-item"><span class="r-icon">👉</span><span>4. BẠN KHÔNG BỎ CUỘC VÌ THIẾU CHUẨN BỊ</span></div>
+        <div class="reason-item"><span class="r-icon">👉</span><span>5. BẠN KHÔNG PHẢI TRẢ HỌC PHÍ BẰNG NHỮNG SAI LẦM</span></div>
  
-        <p><span class="step-icon">⚠️</span><b>3. BẠN KHÔNG RƠI VÀO NHỮNG CẠM BẪY ĐẮT GIÁ</b><br></p>
-        <p><span class="step-icon">📉</span><b>4. BẠN KHÔNG BỎ CUỘC VÌ THIẾU CHUẨN BỊ</b><br></p>
+        <h3 class="red-title">🎁 5 LỢI ÍCH TUYỆT VỜI KHI SỞ HỮU BỘ QUÀ TẶNG</h3>
  
-        <p><span class="step-icon">🚀</span><b>5. BẠN KHÔNG PHẢI TRẢ HỌC PHÍ BẰNG NHỮNG SAI LẦM</b><br></p>
+        <div class="reason-item"><span class="r-icon">👉</span><span>1. ĐI NHANH HƠN – XUẤT CẢNH SỚM HƠN</span></div>
+        <div class="reason-item"><span class="r-icon">👉</span><span>2. CHỌN ĐÚNG CHƯƠNG TRÌNH TỐT – TĂNG CƠ HỘI THÀNH CÔNG</span></div>
+        <div class="reason-item"><span class="r-icon">👉</span><span>3. TỰ BẢO VỆ MÌNH TRƯỚC MỌI RỦI RO</span></div>
+        <div class="reason-item"><span class="r-icon">👉</span><span>4. KIẾM ĐƯỢC NHIỀU TIỀN HƠN – TÍCH LŨY NHANH HƠN</span></div>
+        <div class="reason-item"><span class="r-icon">👉</span><span>5. TỰ TIN HỘI NHẬP – THÀNH CÔNG HƠN KHI VƯƠN RA THẾ GIỚI</span></div>
       </div>
  
       <!-- Right: form -->
