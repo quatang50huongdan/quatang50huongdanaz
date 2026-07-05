@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://quatang50huongdan.github.io/quatang50huongdanaz/sitemap.xml
