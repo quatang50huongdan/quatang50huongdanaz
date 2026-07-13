@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hành Trình Việt — Xuất khẩu lao động uy tín</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,500&family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+ 
+:root{
+  --navy-deep:#0B1D2C;
+  --navy:#132A3D;
+  --navy-light:#1F3F5C;
+  --gold:#C79A3D;
+  --gold-light:#E4C878;
+  --teal:#3C6E63;
+  --paper:#EFF2ED;
+  --paper-dim:#E4E9E1;
+  --ink:#16232C;
+  --white:#FFFFFF;
+  --line: rgba(19,42,61,0.14);
+}
+ 
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Be Vietnam Pro', sans-serif;
+  font-weight:400;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.serif{ font-family:'Literata', serif; }
+.mono{ font-family:'IBM Plex Mono', monospace; letter-spacing:0.02em; }
+img{ display:block; max-width:100%; }
+a{ color:inherit; text-decoration:none; }
+.container{ max-width:1180px; margin:0 auto; padding:0 28px; }
+.eyebrow{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:12px;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--gold);
+  font-weight:600;
+}
+section{ padding:96px 0; position:relative; }
+.btn{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:14px 28px;
+  border-radius:2px;
+  font-weight:600;
+  font-size:15px;
+  cursor:pointer;
+  border:1.5px solid transparent;
+  transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+}
+.btn-gold{ background:var(--gold); color:var(--navy-deep); }
+.btn-gold:hover{ transform:translateY(-2px); box-shadow:0 10px 24px rgba(199,154,61,0.35); }
+.btn-outline{ border-color:rgba(255,255,255,0.4); color:var(--white); }
+.btn-outline:hover{ background:rgba(255,255,255,0.1); transform:translateY(-2px); }
+.btn-outline-dark{ border-color:var(--navy); color:var(--navy); }
+.btn-outline-dark:hover{ background:var(--navy); color:var(--white); }
+ 
+/* reveal on scroll */
+.reveal{ opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
+.reveal.in{ opacity:1; transform:translateY(0); }
+ 
+/* ===== HEADER ===== */
+header{
+  position:sticky; top:0; z-index:100;
+  background:rgba(11,29,44,0.92);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.nav{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:18px 28px; max-width:1180px; margin:0 auto;
+}
+.logo{ display:flex; align-items:center; gap:10px; color:var(--white); }
+.logo-mark{
+  width:34px; height:34px; border:1.5px solid var(--gold); border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--gold); font-weight:600;
+}
+.logo-text{ font-family:'Literata', serif; font-size:19px; font-weight:600; letter-spacing:0.01em; }
+.logo-text span{ color:var(--gold); }
+.nav-links{ display:flex; gap:36px; }
+.nav-links a{ color:rgba(255,255,255,0.82); font-size:14.5px; font-weight:500; transition:color .2s; }
+.nav-links a:hover{ color:var(--gold-light); }
+.nav-cta{ display:flex; align-items:center; gap:18px; }
+.nav .btn-gold{ padding:11px 22px; font-size:14px; }
+.burger{ display:none; }
+ 
+/* ===== HERO ===== */
+.hero{
+  background:linear-gradient(180deg, var(--navy-deep) 0%, var(--navy) 100%);
+  color:var(--white);
+  padding:88px 0 0 0;
+  overflow:hidden;
+  position:relative;
+}
+.hero-grid{
+  display:grid; grid-template-columns:1.15fr 0.85fr; gap:48px;
+  align-items:center; max-width:1180px; margin:0 auto; padding:0 28px 64px;
+}
+.hero h1{
+  font-size:clamp(38px, 5vw, 60px);
+  font-weight:600;
+  line-height:1.08;
+  margin:18px 0 22px;
+  letter-spacing:-0.01em;
+}
+.hero h1 em{ font-style:italic; color:var(--gold-light); font-weight:500; }
+.hero p.lead{
+  font-size:17.5px; color:rgba(255,255,255,0.78); max-width:480px; margin-bottom:34px;
+}
+.hero-actions{ display:flex; gap:16px; flex-wrap:wrap; margin-bottom:56px; }
+ 
+.hero-visual{ position:relative; }
+.passport-card{
+  position:relative;
+  background:var(--navy-light);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:6px;
+  overflow:hidden;
+  box-shadow:0 40px 80px rgba(0,0,0,0.45);
+  transform:rotate(2deg);
+}
+.passport-card img{ width:100%; height:360px; object-fit:cover; filter:saturate(0.9) contrast(1.05); }
+.passport-caption{
+  padding:16px 20px; display:flex; justify-content:space-between; align-items:center;
+  font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:rgba(255,255,255,0.6);
+  border-top:1px solid rgba(255,255,255,0.1);
+}
+.stamp{
+  position:absolute; top:-18px; right:-22px;
+  width:132px; height:132px; border-radius:50%;
+  border:2px solid var(--gold);
+  display:flex; align-items:center; justify-content:center; text-align:center;
+  transform:rotate(-14deg);
+  mix-blend-mode:screen;
+  opacity:0.9;
+  pointer-events:none;
+}
+.stamp::before{
+  content:''; position:absolute; inset:8px; border:1px solid var(--gold); border-radius:50%;
+}
+.stamp-text{
+  font-family:'IBM Plex Mono', monospace; font-size:9.5px; color:var(--gold-light);
+  letter-spacing:0.08em; line-height:1.5; text-transform:uppercase;
+}
+ 
+.stats-strip{
+  border-top:1px solid rgba(255,255,255,0.1);
+  background:rgba(255,255,255,0.03);
+}
+.stats-row{
+  display:grid; grid-template-columns:repeat(4,1fr);
+  max-width:1180px; margin:0 auto; padding:0 28px;
+}
+.stat{ padding:28px 20px; border-right:1px solid rgba(255,255,255,0.08); }
+.stat:last-child{ border-right:none; }
+.stat .num{ font-family:'Literata', serif; font-size:32px; color:var(--gold-light); font-weight:600; }
+.stat .label{ font-size:12.5px; color:rgba(255,255,255,0.6); margin-top:4px; }
+ 
+/* ===== DEPARTURE BOARD ===== */
+.board{
+  background:var(--navy-deep);
+  border-top:1px solid rgba(255,255,255,0.08);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  overflow:hidden; padding:14px 0;
+}
+.board-track{
+  display:flex; gap:56px; white-space:nowrap;
+  animation:scrollBoard 32s linear infinite;
+  width:max-content;
+}
+.board-item{
+  font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--gold-light);
+  display:flex; gap:14px; align-items:center;
+}
+.board-item .route{ color:rgba(255,255,255,0.55); }
+.board-item .dot{ width:5px; height:5px; border-radius:50%; background:var(--teal); display:inline-block; }
+@keyframes scrollBoard{ from{ transform:translateX(0);} to{ transform:translateX(-50%);} }
+ 
+/* ===== WHY US ===== */
+.section-head{ max-width:620px; margin-bottom:56px; }
+.section-head h2{ font-size:clamp(28px,3.4vw,40px); font-weight:600; margin-top:14px; }
+.section-head p{ color:#4a5964; margin-top:14px; font-size:16px; }
+ 
+.features{ display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
+.feature{ background:var(--paper); padding:34px 28px; }
+.feature .num{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--gold); margin-bottom:18px; display:block; }
+.feature h3{ font-size:19px; font-weight:600; margin-bottom:10px; }
+.feature p{ font-size:14.5px; color:#4a5964; }
+ 
+/* ===== JOB ORDERS (BOARDING PASS) ===== */
+.orders{ background:var(--navy-deep); color:var(--white); }
+.orders .section-head p{ color:rgba(255,255,255,0.65); }
+.orders .section-head .eyebrow{ color:var(--gold-light); }
+ 
+.order-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:26px; }
+.ticket{
+  position:relative;
+  display:grid; grid-template-columns:1fr 116px;
+  background:var(--white); color:var(--ink);
+  border-radius:8px; overflow:hidden;
+  box-shadow:0 18px 40px rgba(0,0,0,0.28);
+  transition:transform .3s ease, box-shadow .3s ease;
+}
+.ticket:hover{ transform:translateY(-6px); box-shadow:0 26px 54px rgba(0,0,0,0.4); }
+.ticket-main{ padding:26px 22px; }
+.ticket-flag{ font-size:26px; }
+.ticket-top{ display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:16px; }
+.ticket-status{
+  font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:0.08em;
+  color:var(--teal); border:1px solid var(--teal); padding:4px 8px; border-radius:20px; text-transform:uppercase;
+  white-space:nowrap;
+}
+.ticket-title{ font-family:'Literata', serif; font-size:20px; font-weight:600; margin-bottom:4px; }
+.ticket-sub{ font-size:13px; color:#5b6a74; margin-bottom:20px; }
+.ticket-route{
+  display:flex; align-items:center; gap:10px;
+  font-family:'IBM Plex Mono', monospace; font-size:15px; font-weight:600; color:var(--navy);
+  margin-bottom:20px;
+}
+.ticket-route .plane{ color:var(--gold); font-size:13px; }
+.ticket-meta{ display:grid; grid-template-columns:1fr 1fr; gap:12px 18px; }
+.ticket-meta div span{ display:block; }
+.meta-label{ font-family:'IBM Plex Mono', monospace; font-size:10px; color:#8b98a1; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:3px; }
+.meta-val{ font-size:14.5px; font-weight:600; color:var(--ink); }
+ 
+.ticket-stub{
+  position:relative;
+  background:var(--paper-dim);
+  display:flex; flex-direction:column; align-items:center; justify-content:space-between;
+  padding:22px 10px;
+  border-left:2px dashed #c7cec6;
+}
+.ticket-stub::before, .ticket-stub::after{
+  content:''; position:absolute; left:-9px; width:18px; height:18px; border-radius:50%; background:var(--navy-deep);
+}
+.ticket-stub::before{ top:-9px; }
+.ticket-stub::after{ bottom:-9px; }
+.stub-code{ writing-mode:vertical-rl; font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.1em; color:var(--navy); font-weight:600; }
+.stub-btn{
+  writing-mode:vertical-rl; transform:rotate(180deg);
+  font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.06em;
+  color:var(--white); background:var(--navy); padding:12px 7px; border-radius:20px; text-transform:uppercase;
+  cursor:pointer;
+}
+ 
+.orders-cta{ text-align:center; margin-top:48px; }
+ 
+/* ===== PROCESS ===== */
+.process-wrap{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:64px; align-items:start; }
+.process-img{ position:sticky; top:110px; border-radius:6px; overflow:hidden; }
+.process-img img{ height:520px; object-fit:cover; }
+.steps{ display:flex; flex-direction:column; }
+.step{ display:flex; gap:22px; padding:26px 0; border-bottom:1px solid var(--line); }
+.step:last-child{ border-bottom:none; }
+.step-num{ font-family:'Literata', serif; font-size:26px; color:var(--gold); font-weight:600; min-width:44px; }
+.step h3{ font-size:18px; font-weight:600; margin-bottom:6px; }
+.step p{ font-size:14.5px; color:#4a5964; max-width:440px; }
+ 
+/* ===== TESTIMONIALS ===== */
+.testimonials{ background:var(--paper-dim); }
+.t-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.t-card{ background:var(--white); border:1px solid var(--line); border-radius:8px; padding:28px; }
+.t-quote{ font-family:'Literata', serif; font-style:italic; font-size:16.5px; line-height:1.6; margin-bottom:22px; color:var(--ink); }
+.t-person{ display:flex; align-items:center; gap:12px; }
+.t-person img{ width:44px; height:44px; border-radius:50%; object-fit:cover; }
+.t-name{ font-weight:600; font-size:14.5px; }
+.t-role{ font-size:12.5px; color:#5b6a74; }
+ 
+/* ===== CTA / CONTACT ===== */
+.contact{ background:var(--navy-deep); color:var(--white); }
+.contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:64px; }
+.contact h2{ font-size:clamp(26px,3vw,36px); font-weight:600; margin-bottom:16px; }
+.contact p.lead{ color:rgba(255,255,255,0.65); margin-bottom:32px; max-width:420px; }
+.info-row{ display:flex; gap:14px; padding:16px 0; border-top:1px solid rgba(255,255,255,0.1); }
+.info-row:last-child{ border-bottom:1px solid rgba(255,255,255,0.1); }
+.info-label{ font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--gold-light); text-transform:uppercase; letter-spacing:0.06em; min-width:130px; }
+.form{ background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.12); border-radius:8px; padding:32px; }
+.form label{ display:block; font-size:12.5px; color:rgba(255,255,255,0.6); margin-bottom:6px; font-family:'IBM Plex Mono', monospace; text-transform:uppercase; letter-spacing:0.05em; }
+.form input, .form select{
+  width:100%; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.16);
+  color:var(--white); padding:12px 14px; border-radius:4px; margin-bottom:18px; font-family:'Be Vietnam Pro'; font-size:14.5px;
+}
+.form input::placeholder{ color:rgba(255,255,255,0.35); }
+.form button{ width:100%; justify-content:center; }
+ 
+footer{ background:var(--navy-deep); border-top:1px solid rgba(255,255,255,0.08); padding:28px 0; }
+.foot-row{ display:flex; justify-content:space-between; align-items:center; color:rgba(255,255,255,0.45); font-size:13px; flex-wrap:wrap; gap:12px;}
+.foot-row a{ color:rgba(255,255,255,0.6); }
+ 
+@media (max-width: 880px){
+  .nav-links{ display:none; }
+  .hero-grid{ grid-template-columns:1fr; }
+  .stats-row{ grid-template-columns:repeat(2,1fr); }
+  .stat:nth-child(2){ border-right:none; }
+  .features{ grid-template-columns:repeat(2,1fr); }
+  .order-grid{ grid-template-columns:1fr; }
+  .process-wrap{ grid-template-columns:1fr; }
+  .process-img{ position:static; }
+  .process-img img{ height:280px; }
+  .t-grid{ grid-template-columns:1fr; }
+  .contact-grid{ grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+ 
+<header>
+  <div class="nav">
+    <div class="logo">
+      <div class="logo-mark">HT</div>
+      <div class="logo-text">Hành Trình <span>Việt</span></div>
+    </div>
+    <nav class="nav-links">
+      <a href="#why">Vì sao chọn chúng tôi</a>
+      <a href="#orders">Đơn hàng</a>
+      <a href="#process">Quy trình</a>
+      <a href="#stories">Câu chuyện</a>
+      <a href="#contact">Liên hệ</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-gold">Đăng ký tư vấn</a>
+    </div>
+  </div>
+</header>
+ 
+<section class="hero">
+  <div class="hero-grid">
+    <div class="reveal in">
+      <span class="eyebrow">Xuất khẩu lao động · Nhật Bản · Đài Loan · Hàn Quốc</span>
+      <h1>Mỗi tấm vé<br>là một <em>hành trình</em><br>đổi đời.</h1>
+      <p class="lead">Hành Trình Việt đồng hành cùng người lao động từ ngày nộp hồ sơ đến ngày đặt chân xuống sân bay nước bạn — minh bạch chi phí, cam kết đơn hàng thật.</p>
+      <div class="hero-actions">
+        <a href="#orders" class="btn btn-gold">Xem đơn hàng đang tuyển</a>
+        <a href="#process" class="btn btn-outline">Quy trình 6 bước</a>
+      </div>
+    </div>
+    <div class="hero-visual reveal in">
+      <div class="passport-card">
+        <img src="https://picsum.photos/seed/xkld-hero/700/500" alt="Ảnh placeholder — người lao động tại sân bay, thay bằng ảnh thật của công ty">
+        <div class="passport-caption">
+          <span>HÀNH TRÌNH VIỆT</span>
+          <span>No. 2026 / XKLĐ</span>
+        </div>
+        <div class="stamp">
+          <div class="stamp-text">Giấy phép<br>số 0451/LĐTBXH<br>★ đã kiểm định ★</div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  <div class="stats-strip">
+    <div class="stats-row">
+      <div class="stat"><div class="num">12.400+</div><div class="label">lao động đã xuất cảnh</div></div>
+      <div class="stat"><div class="num">98%</div><div class="label">tỷ lệ đậu phỏng vấn</div></div>
+      <div class="stat"><div class="num">15 năm</div><div class="label">kinh nghiệm hoạt động</div></div>
+      <div class="stat"><div class="num">8 nước</div><div class="label">đối tác tiếp nhận</div></div>
+    </div>
+  </div>
+</section>
+ 
+<div class="board">
+  <div class="board-track" id="boardTrack">
+    <!-- duplicated via JS for seamless loop -->
+  </div>
+</div>
+ 
+<section id="why">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Vì sao chọn chúng tôi</span>
+      <h2>Đi làm việc nước ngoài,<br>nhưng không đi một mình.</h2>
+      <p>Từ tư vấn chọn đơn hàng phù hợp đến hỗ trợ sau khi nhập cảnh, mỗi bước đều có người đồng hành cùng bạn và gia đình.</p>
+    </div>
+    <div class="features reveal">
+      <div class="feature">
+        <span class="num">01</span>
+        <h3>Đơn hàng thật, có hợp đồng</h3>
+        <p>Mọi đơn hàng đều gắn với nghiệp đoàn/chủ sử dụng lao động đã ký kết, công khai hợp đồng trước khi thu phí.</p>
+      </div>
+      <div class="feature">
+        <span class="num">02</span>
+        <h3>Chi phí minh bạch</h3>
+        <p>Bảng chi phí niêm yết rõ từng khoản, không phát sinh, đúng quy định của Bộ Lao động - Thương binh & Xã hội.</p>
+      </div>
+      <div class="feature">
+        <span class="num">03</span>
+        <h3>Đào tạo tiếng & tay nghề</h3>
+        <p>Ký túc xá và trung tâm đào tạo tại chỗ, giáo viên bản ngữ, luyện phỏng vấn sát với thực tế nhà tuyển dụng.</p>
+      </div>
+      <div class="feature">
+        <span class="num">04</span>
+        <h3>Đồng hành sau xuất cảnh</h3>
+        <p>Đường dây hỗ trợ 24/7 tại nước sở tại, xử lý phát sinh về lương, hợp đồng, sức khỏe trong suốt thời gian làm việc.</p>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<section class="orders" id="orders">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Đơn hàng đang tuyển</span>
+      <h2>Chọn hành trình<br>phù hợp với bạn.</h2>
+      <p>Danh sách cập nhật theo tuần. Nhấn "Xem chi tiết" trên mỗi vé để nhận hồ sơ mô tả công việc và bảng chi phí đầy đủ.</p>
+    </div>
+ 
+    <div class="order-grid">
+ 
+      <div class="ticket reveal">
+        <div class="ticket-main">
+          <div class="ticket-top">
+            <div class="ticket-flag">🇯🇵</div>
+            <div class="ticket-status">Đang tuyển</div>
+          </div>
+          <div class="ticket-title">Kỹ thuật viên cơ khí</div>
+          <div class="ticket-sub">Nhà máy chế tạo, tỉnh Osaka, Nhật Bản</div>
+          <div class="ticket-route"><span>HAN</span><span class="plane">✈</span><span>KIX</span></div>
+          <div class="ticket-meta">
+            <div><span class="meta-label">Lương cơ bản</span><span class="meta-val">28–32 triệu/th</span></div>
+            <div><span class="meta-label">Số lượng</span><span class="meta-val">15 nam</span></div>
+            <div><span class="meta-label">Độ tuổi</span><span class="meta-val">20–32</span></div>
+            <div><span class="meta-label">Hạn nộp hồ sơ</span><span class="meta-val">30/08/2026</span></div>
+          </div>
+        </div>
+        <div class="ticket-stub">
+          <div class="stub-code mono">JP-0912</div>
+          <div class="stub-btn">Chi tiết</div>
+        </div>
+      </div>
+ 
+      <div class="ticket reveal">
+        <div class="ticket-main">
+          <div class="ticket-top">
+            <div class="ticket-flag">🇯🇵</div>
+            <div class="ticket-status">Đang tuyển</div>
+          </div>
+          <div class="ticket-title">Chế biến thực phẩm</div>
+          <div class="ticket-sub">Xưởng đóng gói thực phẩm, tỉnh Chiba, Nhật Bản</div>
+          <div class="ticket-route"><span>HAN</span><span class="plane">✈</span><span>NRT</span></div>
+          <div class="ticket-meta">
+            <div><span class="meta-label">Lương cơ bản</span><span class="meta-val">25–28 triệu/th</span></div>
+            <div><span class="meta-label">Số lượng</span><span class="meta-val">20 nữ</span></div>
+            <div><span class="meta-label">Độ tuổi</span><span class="meta-val">19–30</span></div>
+            <div><span class="meta-label">Hạn nộp hồ sơ</span><span class="meta-val">15/08/2026</span></div>
+          </div>
+        </div>
+        <div class="ticket-stub">
+          <div class="stub-code mono">JP-0877</div>
+          <div class="stub-btn">Chi tiết</div>
+        </div>
+      </div>
+ 
+      <div class="ticket reveal">
+        <div class="ticket-main">
+          <div class="ticket-top">
+            <div class="ticket-flag">🇹🇼</div>
+            <div class="ticket-status">Đang tuyển</div>
+          </div>
+          <div class="ticket-title">Công nhân điện tử</div>
+          <div class="ticket-sub">Khu công nghiệp Đào Viên, Đài Loan</div>
+          <div class="ticket-route"><span>SGN</span><span class="plane">✈</span><span>TPE</span></div>
+          <div class="ticket-meta">
+            <div><span class="meta-label">Lương cơ bản</span><span class="meta-val">22–25 triệu/th</span></div>
+            <div><span class="meta-label">Số lượng</span><span class="meta-val">30 nam/nữ</span></div>
+            <div><span class="meta-label">Độ tuổi</span><span class="meta-val">18–35</span></div>
+            <div><span class="meta-label">Hạn nộp hồ sơ</span><span class="meta-val">20/08/2026</span></div>
+          </div>
+        </div>
+        <div class="ticket-stub">
+          <div class="stub-code mono">TW-0334</div>
+          <div class="stub-btn">Chi tiết</div>
+        </div>
+      </div>
+ 
+      <div class="ticket reveal">
+        <div class="ticket-main">
+          <div class="ticket-top">
+            <div class="ticket-flag">🇹🇼</div>
+            <div class="ticket-status">Sắp hết hạn</div>
+          </div>
+          <div class="ticket-title">Hộ lý chăm sóc người già</div>
+          <div class="ticket-sub">Viện dưỡng lão tư nhân, Đài Bắc, Đài Loan</div>
+          <div class="ticket-route"><span>HAN</span><span class="plane">✈</span><span>TPE</span></div>
+          <div class="ticket-meta">
+            <div><span class="meta-label">Lương cơ bản</span><span class="meta-val">20–23 triệu/th</span></div>
+            <div><span class="meta-label">Số lượng</span><span class="meta-val">10 nữ</span></div>
+            <div><span class="meta-label">Độ tuổi</span><span class="meta-val">21–35</span></div>
+            <div><span class="meta-label">Hạn nộp hồ sơ</span><span class="meta-val">25/08/2026</span></div>
+          </div>
+        </div>
+        <div class="ticket-stub">
+          <div class="stub-code mono">TW-0298</div>
+          <div class="stub-btn">Chi tiết</div>
+        </div>
+      </div>
+ 
+      <div class="ticket reveal">
+        <div class="ticket-main">
+          <div class="ticket-top">
+            <div class="ticket-flag">🇰🇷</div>
+            <div class="ticket-status">Đang tuyển</div>
+          </div>
+          <div class="ticket-title">Lao động nông nghiệp (EPS)</div>
+          <div class="ticket-sub">Nông trại rau củ, tỉnh Gangwon, Hàn Quốc</div>
+          <div class="ticket-route"><span>HAN</span><span class="plane">✈</span><span>ICN</span></div>
+          <div class="ticket-meta">
+            <div><span class="meta-label">Lương cơ bản</span><span class="meta-val">30–35 triệu/th</span></div>
+            <div><span class="meta-label">Số lượng</span><span class="meta-val">12 nam</span></div>
+            <div><span class="meta-label">Độ tuổi</span><span class="meta-val">20–39</span></div>
+            <div><span class="meta-label">Hạn nộp hồ sơ</span><span class="meta-val">10/09/2026</span></div>
+          </div>
+        </div>
+        <div class="ticket-stub">
+          <div class="stub-code mono">KR-0155</div>
+          <div class="stub-btn">Chi tiết</div>
+        </div>
+      </div>
+ 
+      <div class="ticket reveal">
+        <div class="ticket-main">
+          <div class="ticket-top">
+            <div class="ticket-flag">🇰🇷</div>
+            <div class="ticket-status">Đang tuyển</div>
+          </div>
+          <div class="ticket-title">Công nhân xây dựng (EPS)</div>
+          <div class="ticket-sub">Công trình dân dụng, Gyeonggi, Hàn Quốc</div>
+          <div class="ticket-route"><span>HAN</span><span class="plane">✈</span><span>ICN</span></div>
+          <div class="ticket-meta">
+            <div><span class="meta-label">Lương cơ bản</span><span class="meta-val">32–38 triệu/th</span></div>
+            <div><span class="meta-label">Số lượng</span><span class="meta-val">8 nam</span></div>
+            <div><span class="meta-label">Độ tuổi</span><span class="meta-val">22–39</span></div>
+            <div><span class="meta-label">Hạn nộp hồ sơ</span><span class="meta-val">05/09/2026</span></div>
+          </div>
+        </div>
+        <div class="ticket-stub">
+          <div class="stub-code mono">KR-0141</div>
+          <div class="stub-btn">Chi tiết</div>
+        </div>
+      </div>
+ 
+    </div>
+ 
+    <div class="orders-cta reveal">
+      <a href="#contact" class="btn btn-outline">Xem tất cả đơn hàng &amp; nhận tư vấn miễn phí</a>
+    </div>
+  </div>
+</section>
+ 
+<section id="process">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Quy trình</span>
+      <h2>6 chặng, từ hồ sơ<br>đến sân bay.</h2>
+      <p>Đây là trình tự thực tế mà mỗi lao động trải qua — mỗi chặng đều có mốc thời gian và người phụ trách rõ ràng.</p>
+    </div>
+    <div class="process-wrap">
+      <div class="process-img reveal">
+        <img src="https://picsum.photos/seed/xkld-process/640/900" alt="Ảnh placeholder — lớp học đào tạo, thay bằng ảnh thật">
+      </div>
+      <div class="steps reveal">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div><h3>Tư vấn &amp; đăng ký hồ sơ</h3><p>Gặp trực tiếp hoặc online, chọn đơn hàng phù hợp với sức khỏe, tài chính và nguyện vọng của bạn.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div><h3>Học tiếng &amp; đào tạo tay nghề</h3><p>4–6 tháng tại trung tâm nội trú, giáo viên bản ngữ, kiểm tra đầu ra theo chuẩn nước tiếp nhận.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div><h3>Khám sức khỏe tổng quát</h3><p>Tại bệnh viện được Bộ Y tế và nước tiếp nhận công nhận, có kết quả trong vòng 3–5 ngày.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div><h3>Phỏng vấn với nghiệp đoàn</h3><p>Luyện tập kỹ năng phỏng vấn theo từng đơn hàng cụ thể trước khi gặp chủ sử dụng lao động thật.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">05</div>
+          <div><h3>Hoàn thiện visa &amp; vé máy bay</h3><p>Công ty hỗ trợ trọn gói thủ tục xin visa, đặt vé và tổ chức buổi định hướng trước khi bay.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">06</div>
+          <div><h3>Xuất cảnh &amp; hỗ trợ tại chỗ</h3><p>Đón tại sân bay nước bạn, ổn định chỗ ở và có đường dây hỗ trợ 24/7 trong suốt hợp đồng.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<section class="testimonials" id="stories">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Câu chuyện từ người trong cuộc</span>
+      <h2>Họ đã đi,<br>và đã trở lại kể chuyện.</h2>
+    </div>
+    <div class="t-grid reveal">
+      <div class="t-card">
+        <p class="t-quote">"Chi phí được ghi rõ ràng từng khoản ngay từ buổi tư vấn đầu tiên, không phát sinh gì thêm khi đến ngày bay."</p>
+        <div class="t-person">
+          <img src="https://picsum.photos/seed/tt-nguyen/100/100" alt="Ảnh placeholder — thay bằng ảnh thật của lao động">
+          <div><div class="t-name">Anh Nguyễn Văn T.</div><div class="t-role">Kỹ thuật viên cơ khí — Osaka, Nhật Bản</div></div>
+        </div>
+      </div>
+      <div class="t-card">
+        <p class="t-quote">"Ba tháng học tiếng ở ký túc xá giúp mình tự tin hẳn khi phỏng vấn, đậu ngay vòng đầu tiên."</p>
+        <div class="t-person">
+          <img src="https://picsum.photos/seed/tt-le/100/100" alt="Ảnh placeholder — thay bằng ảnh thật của lao động">
+          <div><div class="t-name">Chị Lê Thị H.</div><div class="t-role">Chế biến thực phẩm — Chiba, Nhật Bản</div></div>
+        </div>
+      </div>
+      <div class="t-card">
+        <p class="t-quote">"Có số hotline hỗ trợ khi gặp vấn đề với hợp đồng ở Đài Loan, xử lý trong vòng một ngày."</p>
+        <div class="t-person">
+          <img src="https://picsum.photos/seed/tt-tran/100/100" alt="Ảnh placeholder — thay bằng ảnh thật của lao động">
+          <div><div class="t-name">Anh Trần Văn K.</div><div class="t-role">Công nhân điện tử — Đào Viên, Đài Loan</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="reveal">
+        <span class="eyebrow">Bắt đầu hành trình</span>
+        <h2>Đăng ký để được<br>tư vấn miễn phí.</h2>
+        <p class="lead">Để lại thông tin, đội ngũ tư vấn sẽ liên hệ trong vòng 24 giờ để giúp bạn chọn đơn hàng phù hợp nhất.</p>
+        <div class="info-row"><div class="info-label">Hotline</div><div>0900 000 000 (7:00–21:00)</div></div>
+        <div class="info-row"><div class="info-label">Email</div><div>tuvan@hanhtrinhviet.vn</div></div>
+        <div class="info-row"><div class="info-label">Văn phòng</div><div>Số 00, đường ABC, quận XYZ, Hà Nội</div></div>
+        <div class="info-row"><div class="info-label">Giấy phép</div><div>Số 0451/LĐTBXH-GP</div></div>
+      </div>
+      <div class="form reveal">
+        <label>Họ và tên</label>
+        <input type="text" placeholder="Nguyễn Văn A">
+        <label>Số điện thoại</label>
+        <input type="text" placeholder="09xx xxx xxx">
+        <label>Quan tâm đơn hàng</label>
+        <select>
+          <option>Nhật Bản — Kỹ thuật viên cơ khí</option>
+          <option>Nhật Bản — Chế biến thực phẩm</option>
+          <option>Đài Loan — Công nhân điện tử</option>
+          <option>Đài Loan — Hộ lý chăm sóc người già</option>
+          <option>Hàn Quốc — Nông nghiệp (EPS)</option>
+          <option>Hàn Quốc — Xây dựng (EPS)</option>
+        </select>
+        <button class="btn btn-gold" type="button">Gửi đăng ký tư vấn</button>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<footer>
+  <div class="container foot-row">
+    <div>© 2026 Hành Trình Việt. Nội dung &amp; ảnh trong trang là dữ liệu mẫu, vui lòng thay bằng thông tin thật.</div>
+    <div><a href="#why">Vì sao chọn chúng tôi</a> · <a href="#orders">Đơn hàng</a> · <a href="#contact">Liên hệ</a></div>
+  </div>
+</footer>
+ 
+<script>
+  // Departure board: build content then duplicate for seamless scroll
+  const routes = [
+    {code:'JP-0912', route:'HAN → KIX', title:'Kỹ thuật viên cơ khí'},
+    {code:'JP-0877', route:'HAN → NRT', title:'Chế biến thực phẩm'},
+    {code:'TW-0334', route:'SGN → TPE', title:'Công nhân điện tử'},
+    {code:'TW-0298', route:'HAN → TPE', title:'Hộ lý chăm sóc người già'},
+    {code:'KR-0155', route:'HAN → ICN', title:'Lao động nông nghiệp'},
+    {code:'KR-0141', route:'HAN → ICN', title:'Công nhân xây dựng'},
+  ];
+  const track = document.getElementById('boardTrack');
+  function buildBoard(){
+    let html = '';
+    routes.forEach(r=>{
+      html += `<div class="board-item"><span>${r.code}</span><span class="route">${r.route}</span><span>${r.title}</span><span class="dot"></span></div>`;
+    });
+    return html;
+  }
+  track.innerHTML = buildBoard() + buildBoard();
+ 
+  // Reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal:not(.in)');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold:0.15});
+  revealEls.forEach(el=>io.observe(el));
+</script>
+ 
+</body>
+</html>
