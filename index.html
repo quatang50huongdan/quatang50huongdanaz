@@ -83,6 +83,12 @@
   }
   nav ul li{position:relative; display:flex; align-items:center; gap:4px; cursor:pointer;}
   nav ul li:hover{color:var(--blue);}
+  nav ul li a{
+    display:flex;
+    align-items:center;
+    gap:4px;
+    color:inherit;
+  }
   .caret{font-size:11px; margin-left:2px;}
  
   /* Hamburger button (hidden on desktop) - dạng 3 gạch ngang chuẩn */
@@ -167,17 +173,30 @@
   }
   .mobile-nav ul li{
     width:100%;
-    padding:16px 4px;
+    padding:0;
     font-weight:600;
     font-size:16px;
     border-bottom:1px solid #f2f2f2;
+  }
+  .mobile-nav ul li:last-child{border-bottom:none;}
+  .mobile-nav ul li:hover{color:var(--blue);}
+  .mobile-nav ul li a{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    width:100%;
+    padding:16px 4px;
+    color:inherit;
+    cursor:pointer;
+  }
+  /* Mục không có link (ví dụ "Khoá học" có submenu) vẫn giữ padding như cũ */
+  .mobile-nav ul li.no-link{
+    padding:16px 4px;
     display:flex;
     align-items:center;
     gap:6px;
     cursor:pointer;
   }
-  .mobile-nav ul li:last-child{border-bottom:none;}
-  .mobile-nav ul li:hover{color:var(--blue);}
  
   /* ---------- SOCIAL ICONS (mobile menu) ---------- */
   .mobile-nav-social{
@@ -662,12 +681,12 @@
  
     <nav>
       <ul>
-        <li>Trang chủ</li>
-        <li>Về chúng tôi</li>
+        <li><a href="index.html">Trang chủ</a></li>
+        <li><a href="ve-chung-toi.html">Về chúng tôi</a></li>
         <li>Khoá học <span class="caret">▾</span></li>
-        <li>Cộng đồng</li>
-        <li>Học viên</li>
-        <li>Blog</li>
+        <li><a href="cong-dong.html">Cộng đồng</a></li>
+        <li><a href="hoc-vien.html">Học viên</a></li>
+        <li><a href="blog.html">Blog</a></li>
       </ul>
     </nav>
  
@@ -684,12 +703,12 @@
       <button class="mobile-nav-close" id="mobileNavClose" aria-label="Đóng menu">✕</button>
     </div>
     <ul>
-      <li>Trang chủ</li>
-      <li>Về chúng tôi</li>
-      <li>Khoá học <span class="caret">▾</span></li>
-      <li>Cộng đồng</li>
-      <li>Học viên</li>
-      <li>Blog</li>
+      <li><a href="index.html">Trang chủ</a></li>
+      <li><a href="ve-chung-toi.html">Về chúng tôi</a></li>
+      <li class="no-link">Khoá học <span class="caret">▾</span></li>
+      <li><a href="cong-dong.html">Cộng đồng</a></li>
+      <li><a href="hoc-vien.html">Học viên</a></li>
+      <li><a href="blog.html">Blog</a></li>
     </ul>
  
     <div class="mobile-nav-social">
