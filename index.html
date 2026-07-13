@@ -765,16 +765,6 @@
             <input type="text" id="address" placeholder="Số nhà, đường, xã/phường, tỉnh/thành phố" required>
           </div>
  
-          <div>
-            <label class="field-label">Công việc và thu nhập hiện tại</label>
-            <input type="text" id="field" placeholder="Ví dụ: đầu bếp,  lương 8 triệu/ tháng">
-          </div>
- 
-          <div>
-            <label class="field-label">Câu hỏi / Mong muốn của bạn</label>
-            <textarea id="message" placeholder="Nhập nội dung bạn muốn hỏi hoặc mong muốn sau khi tham gia..."></textarea>
-          </div>
- 
           <button type="submit" id="submitBtn">HOÀN TẤT ĐĂNG KÍ</button>
  
           <div class="or-divider">hoặc</div>
@@ -874,13 +864,14 @@
       if(errorBox) errorBox.classList.remove('show');
  
       // Dữ liệu khớp với các biến {{name}} {{phone}} {{email}} {{city}} {{field}} {{message}} trong template
+      // Hai trường "field" và "message" đã bị xóa khỏi form nên gửi giá trị mặc định để khớp template EmailJS
       const templateParams = {
         name: document.getElementById('fullName').value,
         phone: document.getElementById('phone').value,
         email: document.getElementById('email').value,
         city: document.getElementById('address').value,
-        field: document.getElementById('field').value || 'Không chọn',
-        message: document.getElementById('message').value || 'Không có'
+        field: 'Không chọn',
+        message: 'Không có'
       };
  
       submitBtn.disabled = true;
