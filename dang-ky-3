@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đăng ký thông tin - Thành Tâm</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Segoe+UI:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#1a56a8;
+    --red:#d31e25;
+    --yellow:#ffd93d;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Segoe UI', sans-serif;
+    background:#f2f2f2;
+    padding:40px 15px;
+  }
+  .page-header{
+    max-width:420px;
+    margin:0 auto 25px;
+    text-align:center;
+  }
+  .page-header h1{
+    font-family:'Anton', sans-serif;
+    color:var(--blue);
+    font-size:26px;
+    letter-spacing:0.5px;
+    margin-bottom:10px;
+  }
+  .page-header p{
+    color:#444;
+    font-size:15px;
+    line-height:1.5;
+  }
+  .form-image{
+    max-width:420px;
+    margin:0 auto 20px;
+  }
+  .form-image img{
+    width:100%;
+    display:block;
+    border-radius:12px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.15);
+  }
+  .form-wrap{
+    max-width:420px;
+    margin:0 auto;
+    background:var(--yellow);
+    border-radius:12px;
+    padding:30px 25px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.15);
+  }
+  .form-wrap h2{
+    font-family:'Anton', sans-serif;
+    color:var(--blue);
+    text-align:center;
+    font-size:22px;
+    margin-bottom:20px;
+    letter-spacing:0.5px;
+  }
+  label{
+    display:block;
+    font-weight:700;
+    color:#333;
+    margin-bottom:6px;
+    font-size:15px;
+  }
+  label .required{
+    color:var(--red);
+  }
+  input{
+    width:100%;
+    padding:12px 14px;
+    border:none;
+    border-radius:6px;
+    margin-bottom:18px;
+    font-size:15px;
+    outline:none;
+  }
+  input::placeholder{
+    color:#999;
+  }
+  input:focus{
+    box-shadow:0 0 0 2px var(--blue);
+  }
+  button, .btn-group{
+    width:100%;
+    display:block;
+    text-align:center;
+    padding:14px;
+    border-radius:6px;
+    font-weight:700;
+    font-size:15px;
+    letter-spacing:0.5px;
+    cursor:pointer;
+    border:none;
+    text-decoration:none;
+    box-sizing:border-box;
+  }
+  .btn-submit{
+    background:var(--red);
+    color:#fff;
+    margin-bottom:14px;
+    transition:opacity .2s;
+  }
+  .btn-submit:hover{
+    opacity:0.9;
+  }
+  .btn-submit:disabled{
+    opacity:0.6;
+    cursor:not-allowed;
+  }
+  .divider{
+    text-align:center;
+    color:#333;
+    font-weight:700;
+    margin-bottom:14px;
+    font-size:14px;
+  }
+  .btn-group{
+    background:#fff;
+    color:var(--red);
+    border:2px solid var(--red);
+  }
+  .btn-group:hover{
+    background:#fff5f5;
+  }
+  .footer-links{
+    text-align:center;
+    margin-top:16px;
+    font-size:13px;
+  }
+  .footer-links a{
+    color:var(--blue);
+    text-decoration:none;
+  }
+  .footer-links a:hover{
+    text-decoration:underline;
+  }
+  .footer-links span{
+    color:#555;
+    margin:0 4px;
+  }
+  #form-message{
+    text-align:center;
+    font-size:14px;
+    font-weight:700;
+    margin-bottom:12px;
+    display:none;
+  }
+  #form-message.success{color:#1a7a1a;display:block;}
+  #form-message.error{color:var(--red);display:block;}
+</style>
+</head>
+<body>
+ 
+<div class="page-header">
+  <h1>CHO THUÊ NHÓM GROUP</h1>
+  <p>cho thuê nhóm giá rẻ</p>
+</div>
+ 
+<div class="form-image">
+  <img src="images/chothue3.jpg" alt="ảnh ">
+</div>
+ 
+<div class="form-wrap">
+  <h2>THÔNG  TIN KHÁCH HÀNG </h2>
+ 
+  <div id="form-message"></div>
+ 
+  <form id="registerForm">
+    <label>Họ và tên<span class="required">*</span></label>
+    <input type="text" id="name" name="name" placeholder="Nguyễn Văn A" required>
+    <label>Số điện thoại <span class="required">*</span></label>
+    <input type="email" id="email" name="email" placeholder="0987654321" required>
+ 
+    <label>Địa chỉ<span class="required">*</span></label>
+    <input type="text" id="city" name="city" placeholder="Số nhà, đường, xã/phường, tỉnh/thành phố" required>
+ 
+    <label>Công việc hiện tại</label>
+    <input type="text" id="field" name="field" placeholder="Ví dụ: marketing, bán hàng online,...">
+ 
+    <label>Nguyện vọng/mong muốn</label>
+    <input type="text" id="message" name="message" placeholder="Câu hỏi hoặc ghi chú thêm (nếu có)">
+ 
+    <button type="submit" class="btn-submit" id="submitBtn">HOÀN TẤT ĐĂNG KÍ</button>
+ 
+    <div class="divider">VÀ</div>
+ 
+    <a href="https://zalo.me/g/t0m6u2xfhuqvhpuvdgbb" target="_blank" class="btn-group">THAM GIA NHÓM  ZALO  THUÊ NHÓM GIÁ RẺ</a>
+ 
+    <div class="footer-links">
+      <a href="chinh-sach-bao-mat.html">Chính sách bảo mật</a>
+      <span>|</span>
+      <a href="dieu-khoan-dich-vu.html">Điều khoản dịch vụ</a>
+    </div>
+  </form>
+</div>
+ 
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  (function(){
+    emailjs.init("0DlQeLdWBfw_mE1KJ");
+  })();
+ 
+  const form = document.getElementById('registerForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const msgBox = document.getElementById('form-message');
+ 
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+ 
+    submitBtn.disabled = true;
+    submitBtn.textContent = "ĐANG GỬI...";
+    msgBox.style.display = "none";
+ 
+    const params = {
+      name: document.getElementById('name').value,
+      phone: document.getElementById('phone').value,
+      email: document.getElementById('email').value,
+      city: document.getElementById('city').value,
+      field: document.getElementById('field').value,
+      message: document.getElementById('message').value
+    };
+ 
+    emailjs.send("service_3a958xh", "template_kwd4g7v", params)
+      .then(function(){
+        msgBox.textContent = "Đăng ký thành công! Chúng tôi sẽ liên hệ với bạn sớm nhất.";
+        msgBox.className = "success";
+        form.reset();
+      })
+      .catch(function(err){
+        msgBox.textContent = "Có lỗi xảy ra, vui lòng thử lại sau.";
+        msgBox.className = "error";
+        console.error(err);
+      })
+      .finally(function(){
+        submitBtn.disabled = false;
+        submitBtn.textContent = "HOÀN TẤT ĐĂNG KÍ";
+      });
+  });
+</script>
+ 
+</body>
+</html>
